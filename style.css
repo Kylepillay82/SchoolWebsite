@@ -9,6 +9,12 @@ body {
     overflow-x: hidden;
 }
 
+body,
+header {
+    margin: 0;
+    padding: 0;
+}
+
 /* Make images and videos responsive */
 img,
 video {
@@ -254,6 +260,17 @@ button {
         height: 60px;
         padding: 0 1rem;
         gap: 10px;
+    }
+
+    .hero-content {
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    .about {
+        margin-top: 0;
+        padding-top: 1rem;
+        /* Adjust as needed */
     }
 }
 
