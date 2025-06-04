@@ -1,0 +1,168 @@
+{
+  "8": {
+    "Mathematics": [
+      {
+        "title": "June 2023 Paper",
+        "file": "papers/grade8-maths-june2023.pdf"
+      }
+    ],
+    "Natural Sciences": [
+      {
+        "title": "November 2023 Paper",
+        "file": "papers/grade8-natsci-nov2023.pdf"
+      }
+    ]
+  },
+  "9": {
+    "Mathematics": [
+      {
+        "title": "June 2023 Paper",
+        "file": "papers/grade9-maths-june2023.pdf"
+      }
+    ],
+    "Technology": [
+      {
+        "title": "Term 3 Project",
+        "file": "papers/grade9-tech-term3.pdf"
+      }
+    ]
+  },
+  "10": {
+    "Mathematics": [
+      {
+        "title": "June 2023 Paper 1",
+        "file": "papers/grade10-maths-june2023.pdf"
+      },
+      {
+        "title": "November 2023 Paper 2",
+        "file": "papers/grade10-maths-nov2023.pdf"
+      }
+    ],
+    "English": [
+      {
+        "title": "Paper 1 June 2023",
+        "file": "papers/grade10-english-june2023.pdf"
+      }
+    ]
+  },
+  "11": {
+    "Mathematics": [
+      {
+        "title": "KZN-Maths-Grade-12-March-2024-QP-and-Memo",
+        "file": "papers/grade12/maths/KZN-Maths-Grade-12-March-2024-QP-and-Memo.pdf"
+      },
+      {
+        "title": "Gr 12 Mathematics P1 (English) June 2024 Question Paper",
+        "file": "papers/grade12/maths/Gr 12 Mathematics P1 (English) June 2024 Question Paper.pdf"
+      },
+      {
+        "title": "Gr 12 Mathematics P1 (English) June 2024 Possible Answers",
+        "file": "papers/grade12/maths/Gr 12 Mathematics P1 (English) June 2024 Possible Answers.pdf"
+      },
+      {
+        "title": "Gr 12 Mathematics P2 (English) June 2024 Question Paper",
+        "file": "papers/grade12/maths/Gr 12 Mathematics P2 (English) June 2024 Question Paper.pdf"
+      },
+      {
+        "title": "Gr 12 Mathematics P2 (English and Afrikaans) June 2024 Possible Answers",
+        "file": "papers/grade12/maths/Gr 12 Mathematics P2 (English and Afrikaans) June 2024 Possible Answers.pdf"
+      }
+    ],
+    "English": [
+      {
+        "title": "KZN-Maths-Grade-12-March-2024-QP-and-Memo",
+        "file": "papers/grade12/maths/KZN-Maths-Grade-12-March-2024-QP-and-Memo.pdf"
+      },
+      {
+        "title": "Gr 12 Mathematics P1 (English) June 2024 Question Paper",
+        "file": "papers/grade12/maths/Gr 12 Mathematics P1 (English) June 2024 Question Paper.pdf"
+      },
+      {
+        "title": "Gr 12 Mathematics P1 (English) June 2024 Possible Answers",
+        "file": "papers/grade12/maths/Gr 12 Mathematics P1 (English) June 2024 Possible Answers.pdf"
+      },
+      {
+        "title": "Gr 12 Mathematics P2 (English) June 2024 Question Paper",
+        "file": "papers/grade12/maths/Gr 12 Mathematics P2 (English) June 2024 Question Paper.pdf"
+      },
+      {
+        "title": "Gr 12 Mathematics P2 (English and Afrikaans) June 2024 Possible Answers",
+        "file": "papers/grade12/maths/Gr 12 Mathematics P2 (English and Afrikaans) June 2024 Possible Answers.pdf"
+      }
+    ],
+    "Afrikaans": [
+      {
+        "title": "KZN-Maths-Grade-12-March-2024-QP-and-Memo",
+        "file": "papers/grade12/maths/KZN-Maths-Grade-12-March-2024-QP-and-Memo.pdf"
+      },
+      {
+        "title": "Gr 12 Mathematics P1 (English) June 2024 Question Paper",
+        "file": "papers/grade12/maths/Gr 12 Mathematics P1 (English) June 2024 Question Paper.pdf"
+      },
+      {
+        "title": "Gr 12 Mathematics P1 (English) June 2024 Possible Answers",
+        "file": "papers/grade12/maths/Gr 12 Mathematics P1 (English) June 2024 Possible Answers.pdf"
+      },
+      {
+        "title": "Gr 12 Mathematics P2 (English) June 2024 Question Paper",
+        "file": "papers/grade12/maths/Gr 12 Mathematics P2 (English) June 2024 Question Paper.pdf"
+      },
+      {
+        "title": "Gr 12 Mathematics P2 (English and Afrikaans) June 2024 Possible Answers",
+        "file": "papers/grade12/maths/Gr 12 Mathematics P2 (English and Afrikaans) June 2024 Possible Answers.pdf"
+      }
+    ]
+  },
+  "12": {
+    "Mathematics": [
+      {
+        "title": "KZN-Maths-Grade-12-March-2024-QP-and-Memo",
+        "file": "papers/grade12/maths/KZN-Maths-Grade-12-March-2024-QP-and-Memo.pdf"
+      },
+      {
+        "title": "Gr 12 Mathematics P1 (English) June 2024 Question Paper",
+        "file": "papers/grade12/maths/Gr 12 Mathematics P1 (English) June 2024 Question Paper.pdf"
+      },
+      {
+        "title": "Gr 12 Mathematics P1 (English) June 2024 Possible Answers",
+        "file": "papers/grade12/maths/Gr 12 Mathematics P1 (English) June 2024 Possible Answers.pdf"
+      },
+      {
+        "title": "Gr 12 Mathematics P2 (English) June 2024 Question Paper",
+        "file": "papers/grade12/maths/Gr 12 Mathematics P2 (English) June 2024 Question Paper.pdf"
+      },
+      {
+        "title": "Gr 12 Mathematics P2 (English and Afrikaans) June 2024 Possible Answers",
+        "file": "papers/grade12/maths/Gr 12 Mathematics P2 (English and Afrikaans) June 2024 Possible Answers.pdf"
+      }
+    ],
+    "English": [
+      {
+        "title": "English HL P1 May-June 2023",
+        "file": "papers/grade12/english/English HL P1 May-June 2023.pdf"
+      },
+      {
+        "title": "English HL P2 May-June 2023",
+        "file": "papers/grade12/english/English HL P2 May-June 2023.pdf"
+      },
+      {
+        "title": "English HL P3 May-June 2023",
+        "file": "papers/grade12/english/English HL P3 May-June 2023.pdf"
+      }
+    ],
+    "Afrikaans": [
+      {
+        "title": "Afrikaans FAL P1 May-June 2024",
+        "file": "papers/grade12/afrikaans/Afrikaans FAL P1 May-June 2024.pdf"
+      },
+      {
+        "title": "Afrikaans FAL P2 May-June 2024",
+        "file": "papers/grade12/afrikaans/Afrikaans FAL P2 May-June 2024.pdf"
+      },
+      {
+        "title": "Afrikaans FAL P3 May-June 2024",
+        "file": "papers/grade12/afrikaans/Afrikaans FAL P3 May-June 2024.pdf"
+      }
+    ]
+  }
+}
