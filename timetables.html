@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Resources</title>
+    <title>Timetables</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="img/favicon.ico" rel="icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,11 +49,12 @@
                     <small>031 404 8508</small>
                 </div>
                 <div class="h-100 d-inline-flex align-items-center mx-n2">
-                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href="https://www.facebook.com/"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href="https://x.com/"><i
-                            class="fab fa-twitter"></i></a>
-                    <a class="btn btn-square btn-link rounded-0" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary"
+                        href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary"
+                        href="https://x.com/"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-link rounded-0" href="https://www.instagram.com/"><i
+                            class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -73,8 +74,8 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="index.html" class="nav-item nav-link">Home</a>
                 <a href="notices.html" class="nav-item nav-link">Notices</a>
-                <a href="timetables.html" class="nav-item nav-link">Timetables</a>
-                <a href="resources.html" class="nav-item nav-link active">Resources</a>
+                <a href="timetables.html" class="nav-item nav-link active">Timetables</a>
+                <a href="resources.html" class="nav-item nav-link">Resources</a>
                 <a href="about.html" class="nav-item nav-link">About Us</a>
                 <a href="contact.html" class="nav-item nav-link">Contact US</a>
             </div>
@@ -86,45 +87,27 @@
     <!-- Page Header -->
     <div class="container-fluid page-header py-6 my-6 mt-0 wow fadeIn" data-wow-delay="0.1s">
         <div class="container text-center">
-            <h1 class="display-4 text-white animated slideInDown mb-4">Resources</h1>
+            <h1 class="display-4 text-white animated slideInDown mb-4">Timetables</h1>
         </div>
     </div>
     <!-- Page Header -->
 
-
-    <!-- Resources Content -->
+    <!-- Timetables Section -->
     <div class="container-xxl py-6">
         <div class="container text-center">
-            <h6 class="text-primary text-uppercase mb-2">Past Papers</h6>
-            <h1 class="display-6 mb-4">Find Past Papers by Grade and Subject</h1>
+            <h6 class="text-primary text-uppercase mb-2">Exam Timetables</h6>
+            <h1 class="display-6 mb-4">Select Grade and Class</h1>
 
-            <!-- Grade Selection -->
-            <div id="gradeSection">
-                <h4 class="mb-3">Choose a Grade:</h4>
-                <button class="btn btn-primary btn-grade" onclick="showSubjects('Grade 8')">Grade 8</button>
-                <button class="btn btn-primary btn-grade" onclick="showSubjects('Grade 9')">Grade 9</button>
-                <button class="btn btn-primary btn-grade" onclick="showSubjects('Grade 10')">Grade 10</button>
-                <button class="btn btn-primary btn-grade" onclick="showSubjects('Grade 11')">Grade 11</button>
-                <button class="btn btn-primary btn-grade" onclick="showSubjects('Grade 12')">Grade 12</button>
-            </div>
+            <!-- Grade Buttons -->
+            <div id="gradeSection" class="mb-4"></div>
 
-            <!-- Subject Section -->
-            <div id="subjectSection">
-                <h4 class="mt-5 mb-3" id="selectedGradeTitle"></h4>
-                <p>Select a subject:</p>
-                <div id="subjectButtons"></div>
-            </div>
-
-            <!-- Papers Section -->
-            <div id="paperSection">
-                <h4 class="mt-5 mb-3" id="selectedSubjectTitle"></h4>
-                <ul class="list-group" id="papersList"></ul>
+            <!-- Class Buttons -->
+            <div id="classSection" style="display:none;">
+                <h4 id="selectedGradeTitle"></h4>
+                <div id="classButtons"></div>
             </div>
         </div>
     </div>
-    <!-- Resources Content -->
-
-
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer my-6 mb-0 py-6 wow fadeIn" data-wow-delay="0.1s">
@@ -185,7 +168,6 @@
         </div>
     </div>
     <!-- Footer End -->
-     
 
     <!-- Copyright Start -->
     <div class="container-fluid copyright text-light py-4 wow fadeIn" data-wow-delay="0.1s" style="background:#003366;">
@@ -202,64 +184,64 @@
     </div>
     <!-- Copyright End -->
 
-    <!-- Scripts -->
     <script>
-        let pastPapers = {};
-        let selectedGrade = "";
+        let timetables = {};
 
-        // Load JSON
-        async function loadPapers() {
-            try {
-                const response = await fetch("pastPapers.json");
-                pastPapers = await response.json();
-                console.log("Past papers loaded:", pastPapers);
-            } catch (error) {
-                console.error("Error loading past papers:", error);
+        // Load timetables.json
+        fetch("timetables.json")
+            .then(response => {
+                if (!response.ok) throw new Error("Failed to load JSON");
+                return response.json();
+            })
+            .then(data => {
+                timetables = data;
+                showGrades(timetables);
+            })
+            .catch(error => {
+                console.error("Error loading timetables:", error);
+                document.getElementById("gradeSection").innerHTML =
+                    "<p class='text-danger'>Could not load timetables. Please try again later.</p>";
+            });
+
+        // Show Grade buttons
+        function showGrades(data) {
+            const gradeDiv = document.getElementById("gradeSection");
+            gradeDiv.innerHTML = "<h4>Select a Grade:</h4>";
+            for (const grade in data) {
+                const btn = document.createElement("button");
+                btn.className = "btn btn-primary m-2";
+                btn.textContent = grade;
+                btn.onclick = () => showClasses(grade);
+                gradeDiv.appendChild(btn);
             }
         }
 
-        function showSubjects(grade) {
-            selectedGrade = grade;
-            document.getElementById("subjectSection").style.display = "block";
-            document.getElementById("paperSection").style.display = "none";
-            document.getElementById("selectedGradeTitle").textContent = grade + " Subjects";
-            const subjectButtons = document.getElementById("subjectButtons");
-            subjectButtons.innerHTML = "";
+        // Show Class buttons after selecting Grade
+        function showClasses(grade) {
+            const classSection = document.getElementById("classSection");
+            const classButtons = document.getElementById("classButtons");
+            const gradeTitle = document.getElementById("selectedGradeTitle");
 
-            if (pastPapers[grade]) {
-                Object.keys(pastPapers[grade]).forEach(subject => {
-                    const btn = document.createElement("button");
-                    btn.className = "btn btn-secondary btn-subject";
-                    btn.textContent = subject;
-                    btn.onclick = () => showPapers(subject);
-                    subjectButtons.appendChild(btn);
-                });
-            } else {
-                subjectButtons.innerHTML = "<p>No subjects available for this grade.</p>";
+            // Show section
+            classSection.style.display = "block";
+            gradeTitle.textContent = `Available Classes for ${grade}:`;
+
+            // Clear old buttons
+            classButtons.innerHTML = "";
+
+            // Add new class buttons
+            for (const className in timetables[grade]) {
+                const btn = document.createElement("button");
+                btn.className = "btn btn-secondary m-2";
+                btn.textContent = className;
+                btn.onclick = () => {
+                    window.open(timetables[grade][className], "_blank");
+                };
+                classButtons.appendChild(btn);
             }
         }
-
-        function showPapers(subject) {
-            document.getElementById("paperSection").style.display = "block";
-            document.getElementById("selectedSubjectTitle").textContent = subject + " Papers";
-            const papersList = document.getElementById("papersList");
-            papersList.innerHTML = "";
-
-            const papers = pastPapers[selectedGrade][subject];
-            if (papers && papers.length > 0) {
-                papers.forEach(paper => {
-                    const li = document.createElement("li");
-                    li.className = "list-group-item";
-                    li.innerHTML = `<a href="${paper.url}" target="_blank">${paper.name}</a>`;
-                    papersList.appendChild(li);
-                });
-            } else {
-                papersList.innerHTML = "<li class='list-group-item'>No papers available.</li>";
-            }
-        }
-
-        window.onload = loadPapers;
     </script>
+
 
     <!-- JS Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
