@@ -14,7 +14,7 @@
     </script>
 
     <meta charset="utf-8">
-    <title>Notices</title>
+    <title>Resources</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="img/favicon.ico" rel="icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,8 +28,7 @@
     <link href="css/style.css" rel="stylesheet">
     <style>
         .btn-grade,
-        .btn-subject,
-        .btn-paper {
+        .btn-subject {
             margin: 5px;
         }
 
@@ -111,7 +110,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <a href="index.html" class="nav-item nav-link">Home</a>
                 <a href="notices.html" class="nav-item nav-link">Notices</a>
                 <a href="timetables.html" class="nav-item nav-link">Timetables</a>
 
@@ -132,54 +131,46 @@
     <!-- Navbar End -->
 
 
-
-    <!-- Page Header Start -->
+    <!-- Page Header -->
     <div class="container-fluid page-header py-6 my-6 mt-0 wow fadeIn" data-wow-delay="0.1s">
         <div class="container text-center">
-            <h1 class="display-4 text-white animated slideInDown mb-4">Notices</h1>
+            <h1 class="display-4 text-white animated slideInDown mb-4">Past-Papers</h1>
         </div>
     </div>
-    <!-- Page Header End -->
+    <!-- Page Header -->
 
 
-    <!-- Notices Section Start -->
+    <!-- Resources Content -->
     <div class="container-xxl py-6">
         <div class="container text-center">
-            <h6 class="text-primary text-uppercase mb-2">Announcements</h6>
-            <h1 class="display-6 mb-4">Important School Notices</h1>
+            <h6 class="text-primary text-uppercase mb-2">Past Papers</h6>
+            <h1 class="display-6 mb-4">Find Past Papers by Grade and Subject</h1>
 
-            <!-- Filters -->
-            <div class="row mb-4 justify-content-center">
-                <div class="col-md-3 mb-2">
-                    <select id="gradeFilter" class="form-select">
-                        <option value="all">All Grades</option>
-                        <option value="Grade 8">Grade 8</option>
-                        <option value="Grade 9">Grade 9</option>
-                        <option value="Grade 10">Grade 10</option>
-                        <option value="Grade 11">Grade 11</option>
-                        <option value="Grade 12">Grade 12</option>
-                    </select>
-                </div>
-                <div class="col-md-3 mb-2">
-                    <select id="importanceFilter" class="form-select">
-                        <option value="all">All Notices</option>
-                        <option value="important">Important Only</option>
-                        <option value="normal">Normal Only</option>
-                    </select>
-                </div>
-                <div class="col-md-3 mb-2">
-                    <select id="sortFilter" class="form-select">
-                        <option value="latest">Latest First</option>
-                        <option value="oldest">Oldest First</option>
-                    </select>
-                </div>
+            <!-- Grade Selection -->
+            <div id="gradeSection">
+                <h4 class="mb-3">Choose a Grade:</h4>
+                <button class="btn btn-primary btn-grade" onclick="showSubjects('Grade 8')">Grade 8</button>
+                <button class="btn btn-primary btn-grade" onclick="showSubjects('Grade 9')">Grade 9</button>
+                <button class="btn btn-primary btn-grade" onclick="showSubjects('Grade 10')">Grade 10</button>
+                <button class="btn btn-primary btn-grade" onclick="showSubjects('Grade 11')">Grade 11</button>
+                <button class="btn btn-primary btn-grade" onclick="showSubjects('Grade 12')">Grade 12</button>
             </div>
 
-            <!-- Notices List -->
-            <div id="noticesContainer" class="list-group"></div>
+            <!-- Subject Section -->
+            <div id="subjectSection">
+                <h4 class="mt-5 mb-3" id="selectedGradeTitle"></h4>
+                <p>Select a subject:</p>
+                <div id="subjectButtons"></div>
+            </div>
+
+            <!-- Papers Section -->
+            <div id="paperSection">
+                <h4 class="mt-5 mb-3" id="selectedSubjectTitle"></h4>
+                <ul class="list-group" id="papersList"></ul>
+            </div>
         </div>
     </div>
-    <!-- Notices Section End -->
+    <!-- Resources Content -->
 
 
     <!-- Footer Start -->
@@ -259,118 +250,103 @@
     <!-- Copyright End -->
 
 
-    <!-- Back to Top and JS Libraries -->
-    <!-- ... (same as original JS includes) ... -->
+    <style>
+        /* Wrapper for the loop */
+        .topbar-wrapper {
+            display: flex;
+            width: 200%;
+            /* Double width for two sets */
+            animation: ticker 30s linear infinite;
+        }
+
+        /* Each scrolling content set */
+        .topbar-scroll {
+            display: flex;
+            white-space: nowrap;
+        }
+
+        /* Smooth infinite loop animation */
+        @keyframes ticker {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+                /* Moves exactly half (one set width) */
+            }
+        }
+    </style>
+
+
+    <!-- Scripts -->
+    <script>
+        let pastPapers = {};
+        let selectedGrade = "";
+
+        // Load JSON
+        async function loadPapers() {
+            try {
+                const response = await fetch("pastPapers.json");
+                pastPapers = await response.json();
+                console.log("Past papers loaded:", pastPapers);
+            } catch (error) {
+                console.error("Error loading past papers:", error);
+            }
+        }
+
+        function showSubjects(grade) {
+            selectedGrade = grade;
+            document.getElementById("subjectSection").style.display = "block";
+            document.getElementById("paperSection").style.display = "none";
+            document.getElementById("selectedGradeTitle").textContent = grade + " Subjects";
+            const subjectButtons = document.getElementById("subjectButtons");
+            subjectButtons.innerHTML = "";
+
+            if (pastPapers[grade]) {
+                Object.keys(pastPapers[grade]).forEach(subject => {
+                    const btn = document.createElement("button");
+                    btn.className = "btn btn-secondary btn-subject";
+                    btn.textContent = subject;
+                    btn.onclick = () => showPapers(subject);
+                    subjectButtons.appendChild(btn);
+                });
+            } else {
+                subjectButtons.innerHTML = "<p>No subjects available for this grade.</p>";
+            }
+        }
+
+        function showPapers(subject) {
+            document.getElementById("paperSection").style.display = "block";
+            document.getElementById("selectedSubjectTitle").textContent = subject + " Papers";
+            const papersList = document.getElementById("papersList");
+            papersList.innerHTML = "";
+
+            const papers = pastPapers[selectedGrade][subject];
+            if (papers && papers.length > 0) {
+                papers.forEach(paper => {
+                    const li = document.createElement("li");
+                    li.className = "list-group-item";
+                    li.innerHTML = `<a href="${paper.url}" target="_blank">${paper.name}</a>`;
+                    papersList.appendChild(li);
+                });
+            } else {
+                papersList.innerHTML = "<li class='list-group-item'>No papers available.</li>";
+            }
+        }
+
+        window.onload = loadPapers;
+    </script>
+
+    <!-- JS Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+
 </body>
-
-
-<style>
-    /* Wrapper for the loop */
-    .topbar-wrapper {
-        display: flex;
-        width: 200%;
-        /* Double width for two sets */
-        animation: ticker 30s linear infinite;
-    }
-
-    /* Each scrolling content set */
-    .topbar-scroll {
-        display: flex;
-        white-space: nowrap;
-    }
-
-    /* Smooth infinite loop animation */
-    @keyframes ticker {
-        0% {
-            transform: translateX(0);
-        }
-
-        100% {
-            transform: translateX(-50%);
-            /* Moves exactly half (one set width) */
-        }
-    }
-</style>
-
-
-<script>
-    let notices = [];
-
-    async function loadNotices() {
-        try {
-            const response = await fetch("notices.json");
-            const data = await response.json();
-            notices = data.notices;
-            renderNotices();
-        } catch (error) {
-            console.error("Error loading notices:", error);
-        }
-    }
-
-    function renderNotices() {
-        const container = document.getElementById("noticesContainer");
-        container.innerHTML = "";
-
-        const gradeFilter = document.getElementById("gradeFilter").value;
-        const importanceFilter = document.getElementById("importanceFilter").value;
-        const sortOption = document.getElementById("sortFilter").value;
-
-        let filtered = notices.filter(n =>
-            (gradeFilter === "all" || n.grade === gradeFilter || n.grade.toLowerCase() === "all") &&
-            (importanceFilter === "all" ||
-                (importanceFilter === "important" && n.important) ||
-                (importanceFilter === "normal" && !n.important))
-        );
-
-        filtered.sort((a, b) => {
-            return sortOption === "latest"
-                ? new Date(b.date) - new Date(a.date)
-                : new Date(a.date) - new Date(b.date);
-        });
-
-        if (filtered.length === 0) {
-            container.innerHTML = `<p class="text-muted">No notices found.</p>`;
-            return;
-        }
-
-        filtered.forEach(notice => {
-            const noticeElement = document.createElement("div");
-            noticeElement.className = "list-group-item list-group-item-action";
-
-            // Highlight only the text if important
-            const titleClass = notice.important ? "text-danger fw-bold" : "fw-bold";
-
-            noticeElement.innerHTML = `
-            <div class="d-flex w-100 justify-content-between align-items-center">
-                <h5 class="${titleClass} mb-1">
-                    <a href="${notice.url}" target="_blank" class="${titleClass}">${notice.title}</a>
-                </h5>
-                <small class="text-muted">${new Date(notice.date).toLocaleDateString()}</small>
-            </div>
-            <p class="mb-0 text-muted">For: ${notice.grade}</p>
-        `;
-
-            container.appendChild(noticeElement);
-        });
-    }
-
-    document.getElementById("gradeFilter").addEventListener("change", renderNotices);
-    document.getElementById("importanceFilter").addEventListener("change", renderNotices);
-    document.getElementById("sortFilter").addEventListener("change", renderNotices);
-
-    window.onload = loadNotices;
-</script>
-
-
-<!-- JavaScript Libraries -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="lib/wow/wow.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/waypoints/waypoints.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-<!-- Template Javascript -->
-<script src="js/main.js"></script>
 
 </html>

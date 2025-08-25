@@ -1,47 +1,42 @@
 {
   "Grade 8": {
-    "8A": "pdfs/Grade8A_Timetable.pdf",
-    "8B": "pdfs/Grade8B_Timetable.pdf",
-    "8C": "pdfs/Grade8C_Timetable.pdf",
-    "8D": "pdfs/Grade8D_Timetable.pdf",
-    "8E": "pdfs/Grade8E_Timetable.pdf",
-    "8F": "pdfs/Grade8F_Timetable.pdf",
-    "Exams": "pdfs/Grade8_Exam_Timetable.pdf"
+    "A": "timetables/Grade 8/timetables.pdf",
+    "B": "timetables/Grade 8/timetables.pdf",
+    "C": "timetables/Grade 8/timetables.pdf",
+    "D": "timetables/Grade 8/timetables.pdf",
+    "E": "timetables/Grade 8/timetables.pdf",
+    "F": "timetables/Grade 8/timetables.pdf"
   },
   "Grade 9": {
-    "9A": "pdfs/Grade9A_Timetable.pdf",
-    "9B": "pdfs/Grade9B_Timetable.pdf",
-    "9C": "pdfs/Grade9C_Timetable.pdf",
-    "9D": "pdfs/Grade9D_Timetable.pdf",
-    "9E": "pdfs/Grade9E_Timetable.pdf",
-    "9F": "pdfs/Grade9F_Timetable.pdf",
-    "Exams": "pdfs/Grade9_Exam_Timetable.pdf"
+    "A": "timetables/Grade 8/timetables.pdf",
+    "B": "timetables/Grade 8/timetables.pdf",
+    "C": "timetables/Grade 8/timetables.pdf",
+    "D": "timetables/Grade 8/timetables.pdf",
+    "E": "timetables/Grade 8/timetables.pdf",
+    "F": "timetables/Grade 8/timetables.pdf"
   },
   "Grade 10": {
-    "10A": "pdfs/Grade10A_Timetable.pdf",
-    "10B": "pdfs/Grade10B_Timetable.pdf",
-    "10C": "pdfs/Grade10C_Timetable.pdf",
-    "10D": "pdfs/Grade10D_Timetable.pdf",
-    "10E": "pdfs/Grade10E_Timetable.pdf",
-    "10F": "pdfs/Grade10F_Timetable.pdf",
-    "Exams": "pdfs/Grade10_Exam_Timetable.pdf"
+    "A": "timetables/Grade 8/timetables.pdf",
+    "B": "timetables/Grade 8/timetables.pdf",
+    "C": "timetables/Grade 8/timetables.pdf",
+    "D": "timetables/Grade 8/timetables.pdf",
+    "E": "timetables/Grade 8/timetables.pdf",
+    "F": "timetables/Grade 8/timetables.pdf"
   },
   "Grade 11": {
-    "11A": "pdfs/Grade11A_Timetable.pdf",
-    "11B": "pdfs/Grade11B_Timetable.pdf",
-    "11C": "pdfs/Grade11C_Timetable.pdf",
-    "11D": "pdfs/Grade11D_Timetable.pdf",
-    "11E": "pdfs/Grade11E_Timetable.pdf",
-    "11F": "pdfs/Grade11F_Timetable.pdf",
-    "Exams": "pdfs/Grade11_Exam_Timetable.pdf"
+    "A": "timetables/Grade 8/timetables.pdf",
+    "B": "timetables/Grade 8/timetables.pdf",
+    "C": "timetables/Grade 8/timetables.pdf",
+    "D": "timetables/Grade 8/timetables.pdf",
+    "E": "timetables/Grade 8/timetables.pdf",
+    "F": "timetables/Grade 8/timetables.pdf"
   },
   "Grade 12": {
-    "12A": "pdfs/Grade12A_Timetable.pdf",
-    "12B": "pdfs/Grade12B_Timetable.pdf",
-    "12C": "pdfs/Grade12C_Timetable.pdf",
-    "12D": "pdfs/Grade12D_Timetable.pdf",
-    "12E": "pdfs/Grade12E_Timetable.pdf",
-    "12F": "pdfs/Grade12F_Timetable.pdf",
-    "Exams": "pdfs/Grade12_Exam_Timetable.pdf"
+    "A": "timetables/Grade 8/timetables.pdf",
+    "B": "timetables/Grade 8/timetables.pdf",
+    "C": "timetables/Grade 8/timetables.pdf",
+    "D": "timetables/Grade 8/timetables.pdf",
+    "E": "timetables/Grade 8/timetables.pdf",
+    "F": "timetables/Grade 8/timetables.pdf"
   }
 }
